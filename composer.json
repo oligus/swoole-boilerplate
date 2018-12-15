@@ -1,0 +1,24 @@
+{
+  "name": "oli/swoole",
+  "authors": [
+    {
+      "name": "oligus",
+      "email": "oli.gustafsson@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "doctrine/orm": "^2.6",
+    "webonyx/graphql-php": "^0.13.0"
+  },
+  "require-dev": {
+    "eaglewu/swoole-ide-helper": "dev-master",
+    "symfony/var-dumper": "^4.2",
+    "phalcon/ide-stubs": "^3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "SwooleTest\\": "src"
+    }
+  }
+}

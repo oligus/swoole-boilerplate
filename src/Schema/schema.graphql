@@ -1,0 +1,43 @@
+scalar DateTime
+
+type Author {
+    id: ID!
+    name: String
+    posts: [Post]!
+}
+
+type Comment {
+    id: ID!
+    author: Author!
+    title: String
+    content: String
+    date: String
+}
+
+type Comments {
+    count: int!
+    total: int!
+    comments: [Comment]
+}
+
+type Post {
+    id: ID!
+    author: Author!
+    title: String
+    content: String
+    date: String
+    comments: Comments!
+}
+
+input AuthorsFilter {
+    id: ID
+    name: String
+}
+
+type Query {
+    authors: Author
+}
+
+schema {
+    query: Query
+}
