@@ -54,6 +54,10 @@ Create database (CLI):
 $ vendor/bin/doctrine orm:schema-tool:create
 ```
 
+Put in sample data (CLI):
+```bash
+$ mysql -uswoole -pswoole -h mysql -D swoole < data/sample.sql 
+```
 ## GraphQL
 
 Nginx will be serving from port `8085` 

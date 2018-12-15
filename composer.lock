@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17ac895bca51f3a1114968d04047b57e",
+    "content-hash": "08499a94dfade604ab7a0aea0e0e89e5",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1155,54 +1155,6 @@
                 "swoole"
             ],
             "time": "2018-12-10T04:58:19+00:00"
-        },
-        {
-            "name": "phalcon/ide-stubs",
-            "version": "v3.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phalcon/ide-stubs.git",
-                "reference": "65144f2b0fad32b182ccb062b1efc1b4edea5d44"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phalcon/ide-stubs/zipball/65144f2b0fad32b182ccb062b1efc1b4edea5d44",
-                "reference": "65144f2b0fad32b182ccb062b1efc1b4edea5d44",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Phalcon Team",
-                    "email": "team@phalconphp.com",
-                    "homepage": "https://phalconphp.com/en/team"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/phalcon/ide-stubs/graphs/contributors"
-                }
-            ],
-            "description": "The most complete Phalcon Framework IDE stubs library which enables autocompletion in modern IDEs.",
-            "homepage": "https://phalconphp.com",
-            "keywords": [
-                "Devtools",
-                "Eclipse",
-                "autocomplete",
-                "ide",
-                "netbeans",
-                "phalcon",
-                "phpstorm",
-                "stub",
-                "stubs"
-            ],
-            "time": "2018-12-09T14:11:06+00:00"
         },
         {
             "name": "symfony/polyfill-php72",

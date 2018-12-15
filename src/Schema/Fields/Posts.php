@@ -55,8 +55,7 @@ class Posts implements Field
     public static function resolve($value, $args, AppContext $appContext, ResolveInfo $resolveInfo)
     {
         if(!empty($value) && array_key_exists('posts', $value)) {
-            $filter = new FilterDoctrineCollection($value['posts'], $args);
-            $posts = $filter->getResult();
+            $posts = $value['posts'];
         } elseif ($value instanceof Post) {
             $posts = [$value];
         } else {

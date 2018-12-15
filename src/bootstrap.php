@@ -5,6 +5,8 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\ORM\Cache\DefaultCacheFactory;
 use SwooleTest\Database\Manager;
 
 if (!defined('BASE_PATH')) {
@@ -27,9 +29,13 @@ $connectionParams = array(
     ]
 );
 
-$paths = array(APP_PATH . '/Database/Entities');
-
+$cache = new ArrayCache;
 $config = Setup::createConfiguration(true);
+$config->setMetadataCacheImpl($cache);
+$config->setQueryCacheImpl($cache);
+$config->setAutoGenerateProxyClasses(true);
+
+$paths = array(APP_PATH . '/Database/Entities');
 $driver = new AnnotationDriver(new AnnotationReader(), $paths);
 
 AnnotationRegistry::registerLoader('class_exists');

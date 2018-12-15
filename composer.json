@@ -1,5 +1,5 @@
 {
-  "name": "oli/swoole",
+  "name": "oli/swoole-boilerplate",
   "authors": [
     {
       "name": "oligus",
@@ -13,8 +13,7 @@
   },
   "require-dev": {
     "eaglewu/swoole-ide-helper": "dev-master",
-    "symfony/var-dumper": "^4.2",
-    "phalcon/ide-stubs": "^3.4"
+    "symfony/var-dumper": "^4.2"
   },
   "autoload": {
     "psr-4": {

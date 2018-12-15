@@ -50,8 +50,7 @@ class Comments implements Field
     public static function resolve($value, $args, AppContext $appContext, ResolveInfo $resolveInfo)
     {
         if(!empty($value) && array_key_exists('comments', $value)) {
-            $filter = new FilterDoctrineCollection($value['comments'], $args);
-            $comments = $filter->getResult();
+            $comments = $value['comments'];
 
         } else {
             $comments = self::getData($args);
