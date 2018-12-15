@@ -15,7 +15,14 @@ $paths = array(realpath(__DIR__ . '/src/Database/Entities'));
 $isDevMode = true;
 
 $connectionParams = array(
-    'url' => 'sqlite:///' . './data/blog.db'
+    'dbname'    => 'swoole',
+    'user'      => 'swoole',
+    'password'  => 'swoole',
+    'host'      => 'mysql',
+    'driver'    => 'pdo_mysql',
+    'driverOptions' => [
+        1002 => 'SET NAMES utf8'
+    ]
 );
 
 $config = Setup::createConfiguration($isDevMode);

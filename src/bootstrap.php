@@ -17,7 +17,14 @@ if (!defined('APP_PATH')) {
 require_once BASE_PATH . '/vendor/autoload.php';
 
 $connectionParams = array(
-    'url' => 'sqlite:///' . BASE_PATH  . '/data/blog.db'
+    'dbname'    => 'swoole',
+    'user'      => 'swoole',
+    'password'  => 'swoole',
+    'host'      => 'mysql',
+    'driver'    => 'pdo_mysql',
+    'driverOptions' => [
+        1002 => 'SET NAMES utf8'
+    ]
 );
 
 $paths = array(APP_PATH . '/Database/Entities');

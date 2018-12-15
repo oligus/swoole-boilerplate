@@ -9,9 +9,23 @@ services:
     volumes:
     - .:/var/www/html:cached
     - $HOME/.ssh:/root/.ssh
+    links:
+    - mysql
+    command: tail -f /dev/null
+
+  php-http:
+    container_name: swoole_http
+    build:
+      context: .
+      dockerfile: docker/http/Dockerfile
+    volumes:
+    - .:/var/www/html:cached
+    - $HOME/.ssh:/root/.ssh
     ports:
     - "9501:9501"
-    command: tail -f /dev/null
+    expose: [9501]
+    links:
+    - mysql
 
   nginx:
     container_name: swoole_nginx
@@ -22,7 +36,7 @@ services:
     ports:
     - "8085:80"
     links:
-    - php-cli
+    - php-http
 
   mysql:
     container_name: swoole_mysql
@@ -34,5 +48,6 @@ services:
       MYSQL_DATABASE: 'swoole'
     volumes:
     - ./data/mysql:/var/lib/mysql:cached
+    - ./docker/mysql/conf.d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
     ports:
     - "3308:3306"

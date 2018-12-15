@@ -2,7 +2,7 @@
 PROJECT_DIRECTORY=$(shell pwd)/src
 
 # Available docker containers
-CONTAINERS=php-cli,nginx
+CONTAINERS=php-cli,php-http, nginx, mysql
 
 #####################################################
 #							 						#
@@ -28,6 +28,10 @@ stop: prerequisite valid-container
 # Halts the docker containers
 halt: prerequisite
 	- docker-compose -f docker-compose.yml kill
+
+# Restarts the docker containers
+restart: prerequisite
+	- docker-compose -f docker-compose.yml kill && docker-compose -f docker-compose.yml up -d --build
 
 #####################################################
 #							 						#
@@ -82,12 +86,16 @@ status: prerequisite
 bash: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` php-cli bash
 
+# Opens a bash prompt to the http container
+http-bash: prerequisite
+	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` php-http bash
+
 # Opens a bash prompt to the nginx container
-bash-nginx: prerequisite
+nginx-bash: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` nginx bash
 
 # Opens a bash prompt to the mysql container
-bash-mysql: prerequisite
+mysql-bash: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` mysql bash
 
 #####################################################

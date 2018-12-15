@@ -49,3 +49,4 @@ RUN echo "extension=swoole.so" > /etc/php7/conf.d/swoole.ini
 
 WORKDIR /var/www/html
 
+ENTRYPOINT ["/usr/bin/php", "/var/www/html/src/index.php"]
