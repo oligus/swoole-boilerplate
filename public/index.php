@@ -1,13 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace SwooleTest;
+require_once realpath(__DIR__ . '/..') . '/src/bootstrap.php';
 
-require_once 'bootstrap.php';
-
+use Swoole\Http\Server;
 use SwooleTest\Response as GQLResponse;
 
-/** @var \Swoole\Http\Server $http */
-$http = new \swoole_http_server("localhost", 9501);
+$http = new \swoole_http_server("localhost", 8089);
 
 $http->on('request', function (\Swoole\Http\Request $request, $response) {
 
@@ -32,7 +30,6 @@ $http->on('request', function (\Swoole\Http\Request $request, $response) {
 });
 
 $http->start();
-
 
 
 

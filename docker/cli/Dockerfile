@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.12.1
 
 RUN set -xe && \
     apk update && \
@@ -25,24 +25,19 @@ RUN set -xe && \
         php7-pdo \
         php7-pdo_mysql \
         php7-xdebug \
-        php7-phalcon \
         mysql-client \
         git \
         openssh \
-        emacs \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/ \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
-        --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ && \
-        git clone https://github.com/swoole/swoole-src.git && \
-        cd swoole-src && phpize && ./configure && make && make install && \
+        emacs && \
     rm -rf /tmp/* /var/cache/apk/*
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer && \
-    composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+##&& \
+#    composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative
 
 ## Enable swoole
-RUN echo "extension=swoole.so" > /etc/php7/conf.d/swoole.ini
+#RUN echo "extension=swoole.so" > /etc/php7/conf.d/swoole.ini
 
 ## Enable xdebug, makes phan/lint/phpunit slower
 # RUN  /bin/sed -i "s|;zend_extension=xdebug.so|zend_extension=xdebug.so|g" /etc/php7/conf.d/xdebug.ini

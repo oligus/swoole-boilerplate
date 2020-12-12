@@ -26,7 +26,7 @@ $ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' s
 
 Setup MYSQL:
 ```bash
-$ make mysql-bash
+$ make bash-mysql
 $ mysql -uroot -pswoole_root
 ```
 
@@ -40,7 +40,7 @@ GRANT ALL PRIVILEGES ON swoole.* TO 'swoole'@'172.30.0.%';
 
 Check your database access:
 ```bash
-$ make http-bash
+$ make bash-swoole
 $ mysql -u swoole -pswoole -h mysql -D swoole
 ```
 

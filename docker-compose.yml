@@ -13,17 +13,16 @@ services:
     - mysql
     command: tail -f /dev/null
 
-  php-http:
+  php-swoole:
     container_name: swoole_http
     build:
       context: .
-      dockerfile: docker/http/Dockerfile
+      dockerfile: docker/swoole/Dockerfile
     volumes:
     - .:/var/www/html:cached
     - $HOME/.ssh:/root/.ssh
     ports:
-    - "9501:9501"
-    expose: [9501]
+    - "8089:8089"
     links:
     - mysql
 
@@ -36,7 +35,7 @@ services:
     ports:
     - "8085:80"
     links:
-    - php-http
+    - php-swoole
 
   mysql:
     container_name: swoole_mysql
@@ -50,4 +49,4 @@ services:
     - ./data/mysql:/var/lib/mysql:cached
     - ./docker/mysql/conf.d/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
     ports:
-    - "3308:3306"
+    - "3309:3306"

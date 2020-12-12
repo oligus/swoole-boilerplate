@@ -8,7 +8,7 @@ use SwooleTest\Schema\Types\QueryType;
 use SwooleTest\Helpers\JsonHelper;
 use GraphQL\GraphQL;
 use GraphQL\Type\Schema;
-use GraphQL\Error\Debug;
+use GraphQL\Error\DebugFlag;
 
 /**
  * Class Response
@@ -37,7 +37,7 @@ class Response
     public function get()
     {
         $appContext = new AppContext();
-        $appContext->rootUrl = 'http://localhost:8080';
+        $appContext->rootUrl = 'http://localhost:8085';
         $appContext->request = $_REQUEST;
 
         // GraphQL schema to be passed to query executor:
@@ -54,7 +54,7 @@ class Response
             JsonHelper::toArray($this->data['variables'])
         );
 
-        $debug = Debug::INCLUDE_DEBUG_MESSAGE | Debug::INCLUDE_TRACE;
+        $debug = DebugFlag::INCLUDE_DEBUG_MESSAGE | DebugFlag::INCLUDE_TRACE;
 
         return $result->toArray($debug);
     }

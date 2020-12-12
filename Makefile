@@ -1,8 +1,5 @@
-# The default lumen directory
-PROJECT_DIRECTORY=$(shell pwd)/src
-
 # Available docker containers
-CONTAINERS=php-cli,php-http, nginx, mysql
+CONTAINERS=php-cli,php-swoole,nginx,mysql
 
 #####################################################
 #							 						#
@@ -18,7 +15,7 @@ default: run
 run: prerequisite build
 
 # Start individual container
-start: prerequisite valid-container
+start: prerequisite
 	- docker-compose -f docker-compose.yml up -d --build $(filter-out $@,$(MAKECMDGOALS))
 
 # Stop individual container
@@ -28,6 +25,10 @@ stop: prerequisite valid-container
 # Halts the docker containers
 halt: prerequisite
 	- docker-compose -f docker-compose.yml kill
+
+# Kill individual container
+kill: prerequisite
+	- docker-compose -f docker-compose.yml kill $(filter-out $@,$(MAKECMDGOALS))
 
 # Restarts the docker containers
 restart: prerequisite
@@ -87,15 +88,15 @@ bash: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` php-cli bash
 
 # Opens a bash prompt to the http container
-http-bash: prerequisite
-	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` php-http bash
+bash-swoole: prerequisite
+	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` php-swoole bash
 
 # Opens a bash prompt to the nginx container
-nginx-bash: prerequisite
+bash-nginx: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` nginx bash
 
 # Opens a bash prompt to the mysql container
-mysql-bash: prerequisite
+bash-mysql: prerequisite
 	- docker-compose exec --env COLUMNS=`tput cols` --env LINES=`tput lines` mysql bash
 
 #####################################################

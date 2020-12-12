@@ -1,23 +1,22 @@
 {
-  "name": "oli/swoole-boilerplate",
-  "authors": [
-    {
-      "name": "oligus",
-      "email": "oli.gustafsson@gmail.com"
+    "name": "oli/swoole-boilerplate",
+    "authors": [
+        {
+            "name": "oligus",
+            "email": "oli.gustafsson@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "webonyx/graphql-php": "^14.4",
+        "doctrine/orm": "^2.8"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SwooleTest\\": "src"
+        }
     }
-  ],
-  "require": {
-    "ext-json": "*",
-    "doctrine/orm": "^2.6",
-    "webonyx/graphql-php": "^0.13.0"
-  },
-  "require-dev": {
-    "eaglewu/swoole-ide-helper": "dev-master",
-    "symfony/var-dumper": "^4.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "SwooleTest\\": "src"
-    }
-  }
 }
